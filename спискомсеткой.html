@@ -1,0 +1,89 @@
+<div class="catalog-viewers">
+    <span>Показывать: </span>
+    <button class="catalog-viewers__handler catalog-viewers__handler--active">Сеткой</button>
+    <button class="catalog-viewers__handler">Списком</button>
+</div>
+
+<style>
+.catalog-viewers__handler {
+    padding: 12px;
+    border: 1px solid rgb(0,0,0,0.1);
+    background-color: transparent;
+}
+
+.catalog-viewers {
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.catalog-viewers__handler--active {
+    border-color: black;
+}
+
+.catalog-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.right-barsColumn {
+    display: flex;
+    flex-direction: column;
+}
+.productInfoColumn {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    max-width: 440px;
+}
+
+.phobig_stuffColumn {
+    display: flex;
+    /* width: 100%; */
+    gap: 20px;
+}
+.products_catColumn {
+    width: 100% !important;
+}
+.imageColumn {
+    width: 30%;
+}
+</style>
+
+<script>
+
+const catalogViewHandlers = document.querySelectorAll('.catalog-viewers__handler');
+const productList = document.querySelector('.right-bars');
+const productInfo = document.querySelectorAll('.productInfo');
+const productCat = document.querySelectorAll('.products_cat');
+const productStuff = document.querySelectorAll('.phobig_stuff');
+const imageProduct = document.querySelectorAll('.image');
+
+catalogViewHandlers && catalogViewHandlers.forEach((handler, index) => {
+    handler.addEventListener('click', function() {
+		catalogViewHandlers.forEach(handler => handler.classList.remove('catalog-viewers__handler--active'));
+		handler.classList.add('catalog-viewers__handler--active');
+        if (index === 0) {
+            // productList.classList.add('catalog-grid');
+            productInfo.forEach(item => item.classList.remove('productInfoColumn'));
+            productCat.forEach(item => item.classList.remove('products_catColumn'));
+            productStuff.forEach(item => item.classList.remove('phobig_stuffColumn'));
+            imageProduct.forEach(item => item.classList.remove('imageColumn'));
+            productList.classList.remove('right-barsColumn');
+        } else {
+            // productList.classList.remove('catalog-grid');
+            productList.classList.add('right-barsColumn');
+            productInfo.forEach(item => item.classList.add('productInfoColumn'));
+            productCat.forEach(item => item.classList.add('products_catColumn'));
+            productStuff.forEach(item => item.classList.add('phobig_stuffColumn'));
+            imageProduct.forEach(item => item.classList.add('imageColumn'));
+        }
+    });
+});
+
+</script>

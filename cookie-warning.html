@@ -1,0 +1,72 @@
+<style>
+    .cookie-warning {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: none;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+        background-color: #444444;
+        color: white;
+    }
+
+    .cookie-warning--active {
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .cookie-warning__text {
+        margin-right: 30px;
+    }
+
+    .cookie-warning__read {
+        display: block;
+        margin-left: 15px;
+        color: white;
+        text-decoration: underline;
+    }
+
+    .cookie-warning__apply {
+        padding: 12px;
+        background-color: #168de2;
+        border: none;
+    }
+    @media (max-width: 767px) {
+
+        .cookie-warning--active {
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+
+        .cookie-warning__text {
+            margin-right: 0;
+        }
+    }
+</style>
+
+
+<div class="cookie-warning cookie-warning--active">
+    <div class="cookie-warning__text">Продолжая использовать наш сайт, вы даете согласие на обработку файлов cookie. <a target="_blank" rel="nofollow" href="https://ru.wikipedia.org/wiki/Cookie">Подробнее</a></div>
+    <button class="cookie-warning__apply" type="button">OK</button>
+</div>
+
+<script type="text/javascript">
+    const container = document.querySelector(".cookie-warning");
+    if (document.cookie.indexOf("warning") !== -1) {
+        container.classList.remove("cookie-warning--active");
+    }
+
+    if (document.querySelector(".cookie-warning")) {
+        const apply = container.querySelector(".cookie-warning__apply");
+        apply.addEventListener("click", () => {
+            container.classList.remove("cookie-warning--active");
+            document.cookie = "warning=true; max-age=2592000; path=/";
+        });
+    }
+</script>
+
+<a href="/politika-konfidenczialnosti/">Политика конфиденциальности</a>

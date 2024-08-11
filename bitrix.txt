@@ -1,0 +1,9 @@
+всегда проверяю
+
+папку с шаблоном/компонентами
+папку local/php_interface/init.php или bitrix/php_interface/init.php
+
+чтото с отзывами:
+$arSelect = array("ID", "NAME", "PROPERTY_RATING", "PROPERTY_REVIEW");
+$arFilter = array("IBLOCK_ID" => 13, "ACTIVE" => "Y", "PROPERTY_PRODUCT" => $arResult['ID']);
+$res = CIBlockElement::GetList(array(), $arFilter, false, array("nPageSize" => 50), $arSelect);

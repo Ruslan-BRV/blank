@@ -1,0 +1,62 @@
+<div class="header_rating">
+    <div class="header_rating__label">4.3</div>
+    <div class="header_rating__text">
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        <div class="text">
+            Рейтинг в <a
+                href="https://yandex.ru/maps/org/stroy_iz_dpk/1704777351/reviews/?add-review=true"
+                target="_blank" style="color: #f30505">Яндекс</a> <span>более 4.3</span> </div>
+    </div>
+</div>
+
+<style>
+.header_rating {
+	display: flex;
+	flex: 0 0 235px;
+	margin-right: 36px;
+}
+.header_rating__label {
+	flex: 0 0 44px;
+	height: 46px;
+	background: url("/assets/templates/doma/img/header_rating.svg") no-repeat center center/cover;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 27px;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	padding-top: 7px;
+}
+.stars {
+	display: flex;
+}
+.stars .star {
+	flex: 0 0 14px;
+	height: 14px;
+	background: url("/assets/templates/doma/img/star.svg") no-repeat center center/cover;
+	margin-right: 4px;
+}
+.stars .star-active {
+	background: url("/assets/templates/doma/img/star.svg") no-repeat center center/cover;
+}
+.header_rating__text {
+	margin-left: 13px;
+}
+.header_rating__text .text {
+	font-size: 12px;
+	line-height: 15px;
+	margin-top: 3px;
+}
+.header_rating__text .text a {
+	text-decoration: underline;
+}
+.header_rating__text .text span {
+	font-weight: 700;
+}    
+</style>

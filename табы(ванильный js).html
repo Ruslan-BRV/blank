@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tabs__panel {
+            display: none;
+        }
+
+        .tabs__panel--active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="tabs">
+    <ul class="tabs__nav">
+        <li class="tabs__nav-item">
+            <button class="tabs__nav-btn tabs__nav-btn--active">Таб 1</button>
+        </li>
+        <li class="tabs__nav-item">
+            <button class="tabs__nav-btn">Таб 2</button>
+        </li>
+    </ul>
+    <div class="tabs__content">
+        <div class="tabs__panel tabs__panel--active">
+            Описание 1 таба
+        </div>
+        <div class="tabs__panel">
+            Описание 2 таба
+        </div>
+    </div>
+</div>
+
+<!--<script>
+    ;(() => {
+        let tabsList = document.querySelectorAll('.tabs');
+
+        tabsList && tabsList.forEach((tabs, index) => {
+            let tabBtns = tabs.querySelectorAll('.tabs__nav-btn');
+            let tabPanels = tabs.querySelectorAll('.tabs__panel');
+
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].dataset.tabsPath = i;
+                tabPanels[i].dataset.tabsTarget = i;
+            }
+            ;
+
+            if (tabs) {
+                tabs.addEventListener('click', (e) => {
+                    const tabsHandler = (path) => {
+                        tabPanels.forEach(el => {
+                            el.classList.remove('tabs__panel&#45;&#45;active')
+                        });
+                        document.querySelector(`[data-tabs-target="${path}"]`).classList.add('tabs__panel&#45;&#45;active');
+                    };
+
+                    if (e.target.classList.contains('tabs__nav-btn')) {
+                        const tabsPath = e.target.dataset.tabsPath;
+                        tabBtns.forEach(el => {
+                            el.classList.remove('tabs__nav-btn&#45;&#45;active')
+                        });
+                        e.target.classList.add('tabs__nav-btn&#45;&#45;active');
+
+                        tabsHandler(tabsPath);
+                    }
+                });
+            }
+        })
+    })();
+</script>-->
+
+<script>
+    class Tabs {
+        options;
+        tabs;
+        buttons;
+        panels;
+
+        constructor(wrapperClass = ".tabs", options) {
+            this.wrapperClass = wrapperClass;
+            this.activeTabIndex = 0;
+            this.options = {
+                panelClass: "tabs__panel",
+                panelActiveClass: "tabs__panel--active",
+                buttonClass: "tabs__nav-btn",
+                buttonActiveClass: "tabs__nav-btn--active",
+            }
+            this.init();
+        }
+
+        init() {
+            const {panelClass, panelActiveClass, buttonClass, buttonActiveClass} = this.options;
+            const tabs = document.querySelectorAll(this.wrapperClass);
+            tabs && tabs.forEach(tabWrapper => {
+                this.panels = tabWrapper.querySelectorAll(`.${panelClass}`);
+                this.buttons = tabWrapper.querySelectorAll(`.${buttonClass}`);
+                this.panels.forEach((panel, index) => {
+                    if (index === 0) {
+                        panel.classList.add(panelActiveClass);
+                        this.buttons[index].classList.add(buttonActiveClass);
+                    }
+                    this.tabHandler(this.buttons[index], panel)
+                })
+            })
+        }
+
+        resetClasses() {
+            this.panels.forEach((panel, index) => {
+                panel.classList.remove(this.options.panelActiveClass);
+                this.buttons[index].classList.remove(this.options.buttonActiveClass);
+            })
+        }
+
+        tabHandler(button, panel) {
+            button.addEventListener('click', () => {
+                this.resetClasses();
+                button.classList.add(this.options.buttonActiveClass);
+                panel.classList.add(this.options.panelActiveClass);
+            });
+        }
+
+        setActive(index) {
+            this.activeTabIndex = index;
+        }
+
+        goTo(index) {
+            this.resetClasses();
+            this.panels[index].classList.add(this.options.panelActiveClass);
+            this.buttons[index].classList.add(this.options.buttonActiveClass);
+        }
+    }
+
+    const tabs = new Tabs();
+    tabs.goTo(1);
+</script>
+</body>
+</html>

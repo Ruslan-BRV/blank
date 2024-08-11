@@ -1,0 +1,124 @@
+<li class="main_menu__search">
+    <svg width="100%" height="100%" viewBox="0 0 496 496" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M223.42 101.149C210.869 102.749 194.258 107.798 181.338 113.955C127.075 139.567 94.5912 197.318 100.743 256.67C107.88 324.887 160.297 377.343 228.465 384.485C261.195 387.933 296.755 378.82 323.456 360.104L331.453 354.44L352.002 375.003C368.613 391.627 373.412 395.69 377.103 396.552C385.963 398.522 394.084 393.843 396.298 385.47C398.513 377.097 396.544 374.141 374.642 352.1L354.217 331.659L359.877 323.656C378.58 296.935 387.685 261.349 384.24 228.595C380.672 194.978 366.767 165.426 343.143 141.907C311.643 110.261 268.331 95.6076 223.42 101.149ZM260.087 133.657C300.446 140.675 334.407 169.612 346.957 207.415C354.832 231.427 354.955 253.837 346.957 277.603C341.543 294.226 333.668 306.54 320.01 320.208C301.184 339.048 280.759 349.145 254.427 352.469C232.402 355.178 206.809 349.637 186.506 337.693C173.34 329.935 155.253 311.834 147.501 298.659C135.565 278.341 130.028 252.729 132.735 230.811C134.704 215.05 140.487 198.057 148.116 185.866C171.864 147.078 216.898 126.145 260.087 133.657Z" fill="currentColor"/>
+    </svg>
+</li>
+
+<div class="main_menu__form">
+    [[!SimpleSearchForm? &landing=`286` ]]
+    <div class="close-button">
+<svg width="100%" height="100%" viewBox="0 0 448 448" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path d="M196.125 0.945501C122.425 10.2455 57.725 55.3455 24.125 121.046C13.525 141.646 6.525 162.646 2.025 187.346C-0.675 201.746 -0.675 245.946 2.025 260.346C10.725 307.946 30.425 346.946 62.625 380.246C98.225 417.046 145.825 440.546 197.625 446.846C209.725 448.246 240.325 448.046 252.625 446.446C301.425 439.846 344.925 418.846 380.025 384.846C420.325 345.846 444.725 292.346 447.425 237.146C449.125 203.346 444.325 171.946 433.025 143.046C402.825 65.7455 334.925 12.3455 252.625 1.2455C241.025 -0.254499 207.525 -0.454499 196.125 0.945501ZM249.725 34.4455C290.325 40.0455 327.125 57.9455 356.425 86.2455C401.425 129.646 422.625 192.046 413.025 252.846C404.525 307.146 373.125 355.446 326.925 385.246C309.025 396.746 282.525 407.446 261.125 411.746C193.425 425.346 122.325 400.346 77.925 347.546C29.325 289.546 18.925 209.846 51.025 142.346C78.825 84.0455 132.425 44.3455 196.625 34.5455C209.625 32.5455 235.825 32.4455 249.725 34.4455Z" fill="currentColor"/>
+<path d="M285.556 140.017C282.556 141.117 274.256 148.917 252.256 170.817L222.956 200.117L194.256 171.417C178.356 155.717 164.456 142.317 163.156 141.617C157.756 138.917 147.756 140.717 143.856 145.217C139.756 149.917 138.356 158.717 140.956 163.817C141.656 165.117 155.056 179.017 170.756 194.817L199.256 223.417L170.356 253.117C154.456 269.417 140.956 283.717 140.256 284.917C138.356 288.317 138.656 296.617 140.856 300.617C144.456 307.517 154.856 310.617 162.256 307.017C164.056 306.217 178.356 292.317 194.156 276.317L222.756 247.117L252.656 276.817C269.056 293.117 283.756 307.017 285.256 307.617C294.856 311.117 305.256 305.717 307.856 296.017C308.456 293.717 308.756 291.217 308.556 290.517C308.356 289.717 307.856 287.717 307.456 286.117C307.056 283.917 299.156 275.517 276.656 253.317L246.456 223.617L275.656 194.817C291.656 179.017 305.556 164.717 306.356 162.917C308.556 158.517 308.356 153.117 305.856 148.017C302.256 140.617 293.456 137.117 285.556 140.017Z" fill="currentColor"/>
+</svg>
+
+</div>
+</div>
+
+<script>
+    let search = document.querySelector('.main_menu__search');
+    let close = document.querySelector('.close-button');
+    let form = document.querySelector('.main_menu__form');
+    let body = document.querySelector("body");
+    
+    search.addEventListener('click', () => {
+        form.classList.toggle('search_form--active');
+        body.classList.toggle('body--active');
+    });
+
+    close.addEventListener('click', () => {
+        form.classList.remove('search_form--active');
+        body.classList.remove('body--active');
+    });
+    window.addEventListener('click', function(e){
+        form.classList.remove('search_form--active');
+        body.classList.remove('body--active');
+     });
+     var triggerSearch = document.querySelector('.search-input');
+     triggerSearch.addEventListener('click', function(e){
+        e.stopPropagation();
+     });
+     search.addEventListener('click', function(e){
+        e.stopPropagation();
+     });
+    
+</script>
+
+<style>
+.main_menu__search {
+    width: 56px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+.main_menu__search svg {
+    color: white;
+}
+.main_menu__search svg:hover {
+    color: #fcec00;
+}
+.main_menu__form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 999;
+    transition: 0.3s;
+    display: none;
+}
+.search-input {
+    flex: 1;
+    border-radius: 15px;
+    font-size: 17px;
+    max-width: 600px;
+    padding: 16px 24px;
+    border: 1px solid rgb(0,0,0,0.1);
+}
+
+fieldset {
+    display: flex;
+    justify-content: center;
+    padding: 31px;
+}
+.close-button {
+    width: 40px;
+    height: 40px;
+    color: black;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.close-button svg {
+    color: black;
+}
+.close-button svg:hover {
+    color: #fcec00;
+}
+.body--active:before {
+	content:'';
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3);
+	z-index: 2;
+}
+.search_form--active {
+    display: block !important;
+}
+</style>
+
+
+<form class="search-form" action="[[~[[+landing]]]]" method="[[+method]]">
+    <fieldset>
+        <!--<label for="[[+searchIndex]]">[[%simplesearch.search? &namespace=`simplesearch` &topic=`default`]]</label>-->
+
+        <input type="text" name="[[+searchIndex]]" id="[[+searchIndex]]" value="[[+searchValue]]" class="search-input" placeholder="Поиск" />
+        <input type="hidden" name="id" value="[[+landing]]" />
+
+        <input type="submit" style="display:none;" value="[[%simplesearch.search? &namespace=`simplesearch` &topic=`default`]]" />
+    </fieldset>
+</form>
